@@ -21,6 +21,24 @@ class App extends Component {
     }
   }
 
+  componentDidMount = () => {
+    this.getTrending();
+  }
+
+  getTrending = () => {
+    const trendingUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`
+    axios.get(trendingUrl)
+      .then((data) => {
+        this.setState({
+          moviesHeading: 'Movies Trending Today:',
+          displayedMovies: data.data.results,
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
   handleInputChange = (e) => {
     const query = e.target.value;
     if (query.length === 0) {
@@ -41,6 +59,21 @@ class App extends Component {
     axios.get(url + this.state.query)
       .then((data) => {
         this.setState({ suggestions: data.data.results })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+
+  handleMovieSelection = (selection) => {
+    axios.get(url + selection)
+      .then((data) => {
+        this.setState({
+          query: selection,
+          moviesHeading: 'Movie Search Results:',
+          suggestions: [],
+          displayedMovies: data.data.results,
+        })
       })
       .catch((error) => {
         console.log(error);
