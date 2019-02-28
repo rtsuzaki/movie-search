@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './App.css';
+import './app.css'
 import SuggestionList from './SuggestionList.jsx';
 import MovieInput from './MovieInput.jsx';
 import MovieList from './MovieList.jsx';
@@ -113,13 +113,11 @@ class App extends Component {
     return (
       <div className="App">
         <div className="topnav">
-          <ul className="navs">
-            <li className="tab">Home</li>
-            <li className="tab" onClick={this.getTrending}>Trending</li>
-            <li className="search">
-              <MovieInput query={this.state.query} handleInputChange={this.handleInputChange} handleKeyDown={this.handleKeyDown} />
-            </li>
-          </ul>
+          <div><img src="./movieDB_Icon.png" id="logo" /></div>
+          <div className="nav-item" onClick={this.getTrending}>Trending</div>
+          <div className="search">
+            <MovieInput query={this.state.query} handleInputChange={this.handleInputChange} handleKeyDown={this.handleKeyDown} />
+          </div>
         </div>
         
         <h1 className="movies-heading">{this.state.moviesHeading}</h1>
