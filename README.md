@@ -1,6 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Movie-Search
 
-## Available Scripts
+Single page web app which allows a user to enter a movie search query and view results. App displays suggestions when typing in search bar which can then be selected to execute a search for the selected movie.
+
+Supports responsive UI for different screen sizes.
+
+Movie data is retrieved using [The Movie DB API](https://developers.themoviedb.org/3/getting-started/introduction)
+
+The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) due to the time frame provided. (Alternative would have been using Webpack).
+
+## Running the app locally
 
 In the project directory, you can run:
 
@@ -11,6 +19,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
+
+## Other Available Scripts
+
+In the project directory, you can run:
 
 ### `npm test`
 
