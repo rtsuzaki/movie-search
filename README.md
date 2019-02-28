@@ -20,6 +20,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
+![image](https://user-images.githubusercontent.com/37486321/53537377-95a00400-3abe-11e9-8598-34f778214188.png)
+
 ## Other Available Scripts
 
 In the project directory, you can run:
