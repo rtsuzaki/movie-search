@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import './app.css'
+import './app.css';
 import SuggestionList from './SuggestionList.jsx';
 import MovieInput from './MovieInput.jsx';
 import MovieList from './MovieList.jsx';
@@ -121,7 +121,11 @@ class App extends Component {
         </div>
         
         <h1 className="movies-heading">{this.state.moviesHeading}</h1>
-        <SuggestionList suggestions={this.state.suggestions} handleMovieSelection={this.handleMovieSelection} suggestionSelectIndex={this.state.suggestionSelectIndex} />
+        <SuggestionList 
+          suggestions={this.state.suggestions}
+          handleMovieSelection={this.handleMovieSelection}
+          suggestionSelectIndex={this.state.suggestionSelectIndex}
+        />
         <MovieList displayedMovies={this.state.displayedMovies} />
 
       </div>

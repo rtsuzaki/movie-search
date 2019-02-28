@@ -3,7 +3,14 @@ import PropTypes from 'prop-types';
 
 const MovieInput = (props) => (
   <div>
-      <input className="search-box" type="search" placeholder="Enter your movie search here!" value={props.query} onChange={props.handleInputChange} onKeyDown={props.handleKeyDown} />
+      <input 
+        className="search-box"
+        type="search"
+        placeholder="Enter your movie search here!"
+        value={props.query}
+        onChange={props.handleInputChange}
+        onKeyDown={props.handleKeyDown}
+      />
   </div>  
 )
 
