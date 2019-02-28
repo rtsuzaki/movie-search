@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SuggestionListEntry = (props) => (
   <li 
@@ -8,5 +9,11 @@ const SuggestionListEntry = (props) => (
     {props.title}
   </li>
 )
+
+SuggestionListEntry.propTypes = {
+  suggestionSelectIndex: PropTypes.number,
+  index: PropTypes.number,
+  handleMovieSelection: PropTypes.func,
+};
 
 export default SuggestionListEntry;

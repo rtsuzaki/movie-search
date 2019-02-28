@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const MovieListEntry = (props) => {
   const date = new Date(props.movie.release_date).toDateString().split(' ');
@@ -30,4 +31,9 @@ const MovieListEntry = (props) => {
     </div>  
   )  
 }
+
+MovieListEntry.propTypes = {
+  movie: PropTypes.object,
+};
+
 export default MovieListEntry;
