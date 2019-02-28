@@ -4,9 +4,8 @@ import SuggestionListEntry from './SuggestionListEntry.jsx';
 
 const SuggestionList = (props) => (
   <ul className="suggestion-list">
-    {props.suggestions.map((suggestion)=> <SuggestionListEntry suggestion={suggestion} key={suggestion.id} handleMovieSelection={props.handleMovieSelection} />)}
+    {props.suggestions.map((suggestion, index) => <SuggestionListEntry key={suggestion.id} title={suggestion.title} handleMovieSelection={props.handleMovieSelection} suggestionSelectIndex={props.suggestionSelectIndex} index={index} />)}
   </ul>
 )
-
 
 export default SuggestionList;

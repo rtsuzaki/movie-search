@@ -17,6 +17,7 @@ class App extends Component {
       query:'',
       moviesHeading:'',
       suggestions: [],
+      suggestionSelectIndex: -1,
       displayedMovies: [],
     }
   }
@@ -46,16 +47,20 @@ class App extends Component {
         query: '',
         moviesHeading: '',
         suggestions: [],
+        suggestionSelectIndex: -1,
         displayedMovies:[], 
       });
     } else {
-      this.setState({ query }, () => {
-        this.searchMovies();
+      this.setState({ 
+        query,
+        suggestionSelectIndex: -1,
+      }, () => {
+        this.getSuggestions();
       })
     }
   }
 
-  searchMovies = () => {
+  getSuggestions = () => {
     axios.get(url + this.state.query)
       .then((data) => {
         this.setState({ suggestions: data.data.results })
@@ -65,6 +70,29 @@ class App extends Component {
       })
   }
 
+  handleKeyDown = (e) => {
+    const { suggestionSelectIndex, suggestions } = this.state;
+    if (e.keyCode === 13) {
+      if (suggestionSelectIndex === -1) {
+        this.handleMovieSelection(this.state.query);
+      }
+      if (suggestionSelectIndex > -1 && suggestionSelectIndex < suggestions.length - 1) {
+        this.handleMovieSelection(suggestions[suggestionSelectIndex].title)
+      }
+      e.preventDefault()
+    } else if (e.keyCode === 38 && suggestionSelectIndex > -1) {
+      this.setState( prevState => ({
+        suggestionSelectIndex: prevState.suggestionSelectIndex - 1
+      }));
+      e.preventDefault()
+    } else if (e.keyCode === 40 && suggestionSelectIndex < suggestions.length - 1) {
+      this.setState(prevState => ({
+        suggestionSelectIndex: prevState.suggestionSelectIndex + 1
+      }))
+      e.preventDefault()
+    }
+  }
+
   handleMovieSelection = (selection) => {
     axios.get(url + selection)
       .then((data) => {
@@ -72,6 +100,7 @@ class App extends Component {
           query: selection,
           moviesHeading: 'Movie Search Results:',
           suggestions: [],
+          suggestionSelectIndex: -1,
           displayedMovies: data.data.results,
         })
       })
@@ -88,13 +117,13 @@ class App extends Component {
             <li className="tab">Home</li>
             <li className="tab" onClick={this.getTrending}>Trending</li>
             <li className="search">
-              <MovieInput query={this.state.query} handleInputChange={this.handleInputChange} />
+              <MovieInput query={this.state.query} handleInputChange={this.handleInputChange} handleKeyDown={this.handleKeyDown} />
             </li>
           </ul>
         </div>
         
         <h1 className="movies-heading">{this.state.moviesHeading}</h1>
-        <SuggestionList suggestions={this.state.suggestions} handleMovieSelection={this.handleMovieSelection} />
+        <SuggestionList suggestions={this.state.suggestions} handleMovieSelection={this.handleMovieSelection} suggestionSelectIndex={this.state.suggestionSelectIndex} />
         <MovieList displayedMovies={this.state.displayedMovies} />
 
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const MovieListEntry = (props) => {
   const date = new Date(props.movie.release_date).toDateString().split(' ');
-  const dateAsString = `${date[1]} ${date[2]}, ${date[3]}`;
+  const releaseDate = `${date[1]} ${date[2]}, ${date[3]}`;
   
   return (
     <div className='movie-list-entry'>
@@ -15,7 +15,7 @@ const MovieListEntry = (props) => {
           {props.movie.title}
         </h3>
         <div>
-          {dateAsString}
+          {releaseDate}
         </div> 
         <div className="movie-overview">
           {props.movie.overview}

@@ -1,8 +1,11 @@
 import React from 'react';
 
 const SuggestionListEntry = (props) => (
-  <li className="suggestion-list-entry" onClick={() => props.handleMovieSelection(props.suggestion.title)}>
-    {props.suggestion.title}
+  <li 
+    className={props.suggestionSelectIndex === props.index ? 'selected' : 'suggestion-list-entry'}
+    onClick={() => props.handleMovieSelection(props.title)}
+  >
+    {props.title}
   </li>
 )
 
