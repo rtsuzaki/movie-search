@@ -113,7 +113,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="topnav">
-          <div><img src="./movieDB_Icon.png" id="logo" /></div>
+          <div><img src="./movieDB_Icon.png" id="logo" alt="MovieDB_Icon"/></div>
           <div className="nav-item" onClick={this.getTrending}>Trending</div>
           <div className="search">
             <MovieInput query={this.state.query} handleInputChange={this.handleInputChange} handleKeyDown={this.handleKeyDown} />
